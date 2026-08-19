@@ -4,6 +4,7 @@ pipeline {
     environment {
         TRAEFIK_PUBLIC_NETWORK = 'traefik-public'
         TRAEFIK_PUBLIC_TAG = 'traefik-public'
+        TRAEFIK_TAG = 'naga200.com'
     }
  
     stages {
@@ -17,8 +18,6 @@ pipeline {
         stage('Docker Build') {
             steps {
                 sh '''
-                    export TRAEFIK_PUBLIC_NETWORK=traefik-public
-                    export TRAEFIK_PUBLIC_TAG=traefik-public
                     docker compose build
                 '''
             }
@@ -27,8 +26,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                    export TRAEFIK_PUBLIC_NETWORK=traefik-public
-                    export TRAEFIK_PUBLIC_TAG=traefik-public
                     docker compose up -d
                 '''
             }
@@ -36,8 +33,11 @@ pipeline {
  
         stage('Verify') {
             steps {
-                sh 'docker compose ps'
+                sh '''
+                    docker compose ps
+                '''
             }
         }
     }
 }
+ 
