@@ -2,7 +2,7 @@ pipeline {
     agent any
  
     environment {
-        STACK_NAME: 'naga200-com'
+        STACK_NAME = 'naga200-com'
         TRAEFIK_PUBLIC_NETWORK = 'traefik-public'
         TRAEFIK_PUBLIC_TAG = 'traefik-public'
         TRAEFIK_TAG = 'naga200.com'
