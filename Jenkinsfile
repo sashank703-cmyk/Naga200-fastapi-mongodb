@@ -1,7 +1,13 @@
 pipeline {
     agent any
  
+    environment {
+        TRAEFIK_PUBLIC_NETWORK = 'traefik-public'
+        TRAEFIK_PUBLIC_TAG = 'traefik-public'
+    }
+ 
     stages {
+ 
         stage('Checkout') {
             steps {
                 checkout scm
@@ -12,6 +18,7 @@ pipeline {
             steps {
                 sh '''
                     export TRAEFIK_PUBLIC_NETWORK=traefik-public
+                    export TRAEFIK_PUBLIC_TAG=traefik-public
                     docker compose build
                 '''
             }
@@ -21,6 +28,7 @@ pipeline {
             steps {
                 sh '''
                     export TRAEFIK_PUBLIC_NETWORK=traefik-public
+                    export TRAEFIK_PUBLIC_TAG=traefik-public
                     docker compose up -d
                 '''
             }
