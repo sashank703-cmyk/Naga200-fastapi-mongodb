@@ -6,6 +6,12 @@ pipeline {
         TRAEFIK_PUBLIC_NETWORK = 'traefik-public'
         TRAEFIK_PUBLIC_TAG = 'traefik-public'
         TRAEFIK_TAG = 'naga200.com'
+
+        DOCKER_IMAGE = 'backend'
+        DOCKER_IMAGE_CELERYWORKER = 'celeryworker'
+        DOCKER_IMAGE_FRONTEND = 'frontend'
+
+        DOMAIN = 'localhost'
     }
  
     stages {
